@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+
+ <form method="post" th:object="${user}">
+
+      <div>
+          <label th:for="name">Full Name</label>
+          <input class="form-control" th:field="*{name}" />
+          <span th:errors="*{name}" class="error"></span>
+      </div>
+
+      <div>
+          <label th:for="bloodgroup">Blood Group</label>
+          <input class="form-control" th:field="*{bloodgroup}" />
+          <span th:errors="*{bloodgroup}" class="error"></span>
+      </div>
+
+      <div>
+          <label th:for="mobilenumber">Mobile Number</label>
+          <input class="form-control" th:field="*{mobilenumber}" />
+          <span th:errors="*{mobilenumber}" class="error"></span>
+      </div>
+
+      <div>
+          <label th:for="zipcode">Zip Code</label>
+          <input class="form-control" th:field="*{zipcode}" />
+          <span th:errors="*{zipcode}" class="error"></span>
+      </div>
+
+      <div>
+          <label th:for="email">Email</label>
+          <input class="form-control" th:field="*{email}" />
+          <span th:errors="*{email}" class="error"></span>
+      </div>
+
+      <div >
+          <label th:for="password">Password</label>
+          <input class="form-control" th:field="*{password}" />
+          <span th:errors="*{password}" class="error"></span>
+      </div>
+
+      <div >
+         <label>Confirm Password</label>
+          <input type="password" name="cpassword"/>
+      </div>
+
+    <!-- <div >
+          <label th:for="type">Type</label>
+          <select name="bloodId">
+              <option th:each="category: ${categories}"
+                      th:text="${category.name}"
+                      th:value="${category.id}"></option>
+          </select>
+      </div>-->
+
+      <input type="submit" value="Sign Up" />
+  </form>
+</body>
+</html>

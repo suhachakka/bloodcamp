@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="POST" >
+    <table>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" name="email" /></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="password" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Sign In"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Don't have an Account? <a href="newdonor">New Donor</a>
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
