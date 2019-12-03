@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Optional;
-
+//@RequestMapping("home")
 @Controller
 public class HomeController {
 
@@ -26,7 +26,7 @@ public class HomeController {
     public String index(Model model){
         model.addAttribute("title","BLOOD DONORS");
        // model.addAttribute(new User());
-        return "index";
+        return "event";
     }
 
 
@@ -37,8 +37,7 @@ public class HomeController {
     }
 
     @RequestMapping(value="login", method = RequestMethod.POST)
-    public String processLogin(@RequestParam("name") String name, @RequestParam("password") String password, Model model){
-
+    public String processLogin(@RequestParam int id,@RequestParam String name, @RequestParam  String password, Model model){
         Optional<Login> loginone = loginDao.findById(name);
         Login login = loginone.get();
 
