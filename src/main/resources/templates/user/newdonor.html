@@ -42,13 +42,15 @@
 
       <div >
           <label th:for="password">Password</label>
-          <input class="form-control" th:field="*{password}" />
+          <input type="password" class="form-control" th:field="*{password}" />
           <span th:errors="*{password}" class="error"></span>
       </div>
 
       <div >
          <label>Confirm Password</label>
-          <input type="password" name="cpassword"/>
+          <input type="password" class="form-control" th:field="*{confirmPassword}"/>
+          <span th:errors="*{confirmPassword}" class="error"></span>
+
       </div>
 
     <!-- <div >

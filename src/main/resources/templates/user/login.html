@@ -8,17 +8,18 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
+<div class="container">
 <form method="POST" th:object ="${login}">
     <table>
         <tr>
-            <td>Email</td>
-            <td><input type="text" th:field="*{email}" /></td>
-            <span th:errors="*{email}" class="error"></span>
+            <td>UserName</td>
+            <td><input type="text" th:field="*{name}" /></td>
+            <span th:errors="*{name}" class="error"></span>
         </tr>
         <tr>
             <td>Password</td>
-            <td><input type="password" th:field="{password}" /></td>
-            <span th:errors="*{passwords}" class="error"></span>
+            <td><input type="password" th:field="*{password}" /></td>
+            <span th:errors="*{password}" class="error"></span>
         </tr>
         <tr>
             <td colspan="2">
@@ -33,6 +34,6 @@
         </tr>
     </table>
 </form>
-
+</div>
 </body>
 </html>

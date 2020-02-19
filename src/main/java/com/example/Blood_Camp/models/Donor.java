@@ -20,8 +20,8 @@ public class Donor {
     private String bloodgroup;
 
     @NotNull
-    @Pattern(regexp = "\\(\\d{3}\\)\\d{3-\\d{4}" , message = "phone number must be(123)456-7890")
-    private int mobilenumber;
+    @Pattern(regexp = "\\(\\d{3}\\)\\d{3}-\\d{4}" , message = "phone number must be(123)456-7890")
+    private String mobilenumber;
 
     @NotNull
     @Min(5)
@@ -46,7 +46,7 @@ public class Donor {
 
     public Donor(){}
 
-    public Donor(int id, String name, String bloodgroup, int mobilenumber, int zipcode, String email, String password, String confirmPassword) {
+    public Donor(int id, String name, String bloodgroup, String mobilenumber, int zipcode, String email, String password, String confirmPassword) {
         this.id = id;
         this.name = name;
         this.bloodgroup = bloodgroup;
@@ -97,11 +97,11 @@ public class Donor {
         this.bloodgroup = bloodgroup;
     }
 
-    public int getMobilenumber() {
+    public String getMobilenumber() {
         return mobilenumber;
     }
 
-    public void setMobilenumber(int mobilenumber) {
+    public void setMobilenumber(String mobilenumber) {
         this.mobilenumber = mobilenumber;
     }
 

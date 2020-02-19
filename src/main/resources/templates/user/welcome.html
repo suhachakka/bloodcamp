@@ -9,8 +9,15 @@
 <nav th:replace="fragments :: navigation"></nav>
 
 <div>
-    <!--<h1 th:text="Welcome + ', ' + ${donor.name} "></h1>-->
-    <h1>Welcome to Blood Camp</h1>
+    <div th:if ="${donor}">
+        <h1 th:text="Welcome + ', ' + ${donor.name}" ></h1>
+
+    <!--<h1>Welcome to Blood Camp</h1>-->
+    </div>
+    <div th:if="${login}">
+        <h1 th:text="Welcome + ', ' + ${login.name}" ></h1>
+
+    </div>
 </div>
 
 </body>

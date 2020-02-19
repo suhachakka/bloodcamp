@@ -1,6 +1,7 @@
 package com.example.Blood_Camp.controllers;
 
 import com.example.Blood_Camp.models.Donor;
+import com.example.Blood_Camp.models.Login;
 import com.example.Blood_Camp.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,6 +44,22 @@ public class UserController {
         }
 
         userDao.save(newDonor);
+        return "user/welcome";
+    }
+    @GetMapping(value="login")
+    public String displayloginform(Model model){
+        model.addAttribute("title","login");
+        model.addAttribute(new Login());
+        return "user/login";
+    }
+
+    @PostMapping(value="login")
+    public String processloginform(@ModelAttribute @Valid Login newLogin, Errors errors, Model model){
+
+        if(errors.hasErrors()){
+            model.addAttribute("title","login");
+            return "user/login";
+        }
         return "user/welcome";
     }
 
