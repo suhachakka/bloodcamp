@@ -63,6 +63,7 @@ public class Donor {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+        checkPassword();
     }
 
     public int getZipcode() {
@@ -119,5 +120,12 @@ public class Donor {
 
     public void setPassword(String password) {
         this.password = password;
+        checkPassword();
+    }
+
+    public void checkPassword() {
+        if(confirmPassword!= null && password!= null && !password.equals(confirmPassword)){
+            confirmPassword=null;
+        }
     }
 }
