@@ -8,15 +8,17 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<form method="POST" >
+<form method="POST" th:object ="${login}">
     <table>
         <tr>
             <td>Email</td>
-            <td><input type="text" name="email" /></td>
+            <td><input type="text" th:field="*{email}" /></td>
+            <span th:errors="*{email}" class="error"></span>
         </tr>
         <tr>
             <td>Password</td>
-            <td><input type="password" name="password" /></td>
+            <td><input type="password" th:field="{password}" /></td>
+            <span th:errors="*{passwords}" class="error"></span>
         </tr>
         <tr>
             <td colspan="2">
@@ -26,7 +28,7 @@
 
         <tr>
             <td>
-                Don't have an Account? <a href="newdonor">New Donor</a>
+                Don't have an Account? <a href="/user/newdonor">New Donor</a>
             </td>
         </tr>
     </table>

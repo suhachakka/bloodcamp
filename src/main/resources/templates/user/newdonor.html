@@ -7,9 +7,8 @@
 <h1 th:text="${title}">Default Title</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
-
-
- <form method="post" th:object="${user}">
+<div class="container">
+ <form method="post" th:object="${donor}">
 
       <div>
           <label th:for="name">Full Name</label>
@@ -63,5 +62,9 @@
 
       <input type="submit" value="Sign Up" />
   </form>
+<p>
+    Already a User? <a href = "/user/login">Sign in</a>
+</p>
+</div>
 </body>
 </html>

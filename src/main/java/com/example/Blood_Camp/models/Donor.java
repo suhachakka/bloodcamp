@@ -2,28 +2,51 @@ package com.example.Blood_Camp.models;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 
-public class User {
+public class Donor {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
+    @NotNull
+    @Size(min=5, max=10)
     private String name;
+
     private String bloodgroup;
+
+    @NotNull
+    @Pattern(regexp = "\\(\\d{3}\\)\\d{3-\\d{4}" , message = "phone number must be(123)456-7890")
     private int mobilenumber;
+
+    @NotNull
+    @Min(5)
     private int zipcode;
+
+    @NotNull
+    @Email
     private String email;
+
+    @NotNull
+    @Size(min=5 , max=10)
     private String password;
 
-    public User(){}
 
-    public User(int id, String name, String bloodgroup, int mobilenumber, int zipcode, String email, String password) {
+    @NotNull (message = "passwords do not match")
+    @Transient
+    private String confirmPassword;
+
+
+
+
+
+    public Donor(){}
+
+    public Donor(int id, String name, String bloodgroup, int mobilenumber, int zipcode, String email, String password, String confirmPassword) {
         this.id = id;
         this.name = name;
         this.bloodgroup = bloodgroup;
@@ -31,6 +54,15 @@ public class User {
         this.zipcode = zipcode;
         this.email = email;
         this.password = password;
+        this.confirmPassword = confirmPassword;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     public int getZipcode() {

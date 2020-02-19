@@ -3,13 +3,15 @@ package com.example.Blood_Camp.models;
 import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
-@Entity
+
 public class Login {
 
-    @Id
-    @Generated(value="assigned")
+    @NotEmpty(message = "Please enter the name")
     private String name;
+
+    @NotEmpty(message = "Please enter the password")
     private String password;
 
     public Login(){}
