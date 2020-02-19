@@ -23,7 +23,7 @@ public class UserController {
 
     @RequestMapping(value="")
     public String index(Model model){
-        model.addAttribute("title","BLOOD DONORS");
+        model.addAttribute("title","BLOOD CAMP");
         model.addAttribute("users",userDao.findAll());
         return "user/welcome";
     }
