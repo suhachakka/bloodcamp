@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<!--<p th:unless="${cheeses} and ${cheeses.size()}">no cheese :(</p>-->
+
+
+<table class="table">
+
+    <tr>
+        <th>FullName</th>
+        <th>BloodGroup</th>
+        <th>MobileNumber</th>
+        <th>ZipCode</th>
+        <th>Email</th>
+        <th>edit</th>
+        <th>delete</th>
+    </tr>
+
+    <tr th:each="donor : ${donors}">
+        <td th:text="${donor.name}"></td>
+        <td th:text="${donor.bloodgroup}"></td>
+        <td th:text="${donor.mobilenumber}"></td>
+        <td th:text="${donor.zipcode}"></td>
+        <td th:text="${donor.email}"></td>
+        <!--<td th:text="${donor.password}"></td>-->
+        <!--<td th:text="${donor.confirmpassword}"></td>-->
+        <td><a th:href="@{/donors/edit/{id}(id=${donor.id})}">edit</a></td>
+        <td><a th:href="@{/donors/delete}">delete</a></td>
+
+
+    </tr>
+
+</table>
+
+<!--<a href="/cheese/add">Add</a> |-->
+<!--<a href="/cheese/remove">Remove</a>-->
+</body>
+</html>

@@ -8,6 +8,6 @@ import javax.transaction.Transactional;
 
 @Repository
 @Transactional
-public interface UserDao extends CrudRepository<Donor, Integer> {
+public interface DonorDao extends CrudRepository<Donor, Integer> {
 
 }

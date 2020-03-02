@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+<div class="container">
+    <form method="post" action="/donors/edit">
+
+        <div>
+            <label th:for="name">Full Name</label>
+            <input class="form-control" th:field="*{donor.name}" />
+            <span th:errors="*{donor.name}" class="error"></span>
+        </div>
+
+        <div>
+            <label th:for="bloodgroup">Blood Group</label>
+            <!--<input class="form-control" th:field="*{bloodgroup}" />-->
+            <select class="form-control" th:field="*{donor.bloodgroup}">
+                <option value = "AB+">AB+</option>
+                <option value = "AB-">AB-</option>
+                <option value = "O+">O+</option>
+                <option value = "O-">O-</option>
+                <option value = "A+">A+</option>
+                <option value = "A-">A-</option>
+                <option value = "B+">B+</option>
+                <option value = "B-">B-</option>
+
+
+
+            </select>
+            <span th:errors="*{donor.bloodgroup}" class="error"></span>
+        </div>
+
+        <div>
+            <label th:for="mobilenumber">Mobile Number</label>
+            <input class="form-control" th:field="*{donor.mobilenumber}" />
+
+            <span th:errors="*{donor.mobilenumber}" class="error"></span>
+        </div>
+
+        <div>
+            <label th:for="zipcode">Zip Code</label>
+            <input class="form-control" th:field="*{donor.zipcode}" />
+            <span th:errors="*{donor.zipcode}" class="error"></span>
+        </div>
+
+        <div>
+            <label th:for="email">Email</label>
+            <input class="form-control" th:field="*{donor.email}" />
+            <span th:errors="*{donor.email}" class="error"></span>
+        </div>
+
+        <div >
+            <label th:for="password">Password</label>
+            <input type="password" class="form-control" th:field="*{donor.password}" />
+            <span th:errors="*{donor.password}" class="error"></span>
+        </div>
+
+        <div >
+            <label>Confirm Password</label>
+            <input type="password" class="form-control" th:field="*{donor.confirmPassword}"/>
+            <span th:errors="*{donor.confirmPassword}" class="error"></span>
+
+        </div>
+        <input type="hidden" name="donorid" th:value="${donor.id}"/>
+
+
+
+        <input type="submit" value="Edit" class="btn btn-success" />
+    </form>
+</div>
+</body>
+</html>
