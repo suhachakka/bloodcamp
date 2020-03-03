@@ -43,9 +43,9 @@ public class Donor {
 
 
 
-
+//default constructor
     public Donor(){}
-
+//parameterized constructor
     public Donor(int id, String name, String bloodgroup, String mobilenumber, int zipcode, String email, String password, String confirmPassword) {
         this.id = id;
         this.name = name;

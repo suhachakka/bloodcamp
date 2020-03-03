@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+<nav th:replace="fragments :: navigation"></nav>
+
+<h1 th:text="${title}">Default Title</h1>
+
+    <div class="card" style="width: 18rem;">
+        <img src="https://previews.123rf.com/images/elenarolau/elenarolau1605/elenarolau160500024/56876405-blood-donation-illustration-stylized-heart-with-drop-and-typographic-composition-world-blood-donor-d.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <!--<th:block th:each="event : ${events}">-->
+            <div th:if="${event}">
+            <h5 th:text ="${'Location :' + event.location}" class="card-title">Card title</h5>
+            <p th:text ="${'DATE:' + event.date}" class="card-text">Date</p>
+            <p th:text ="${'Start Time: ' +event.starttime}" class="card-text">startTime</p>
+            <p th:text ="${'End Time: ' +event.endtime}" class="card-text">end Time</p>
+
+            <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+            <!--</th:block>-->
+            </div></div>
+</div>
+</body>
+</html>
