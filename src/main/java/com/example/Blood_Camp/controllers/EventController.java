@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -20,13 +17,13 @@ import javax.validation.Valid;
 @RequestMapping("events")
 
 public class EventController {
-     @Autowired
-     private EventDao eventDao;
+    @Autowired
+    private EventDao eventDao;
 
     @GetMapping //path or route
     public String viewevent(Model model) { // route handler method
         model.addAttribute("title", "event details");
-        model.addAttribute("events",eventDao.findAll());
+        model.addAttribute("events", eventDao.findAll());
         return "events/view";
     }
 
@@ -52,5 +49,23 @@ public class EventController {
 //        model.addAttribute("donors", donorDao.findAll());
         return "redirect:";
 
+    }
+
+    @GetMapping("view/{id}")
+    public String renderDeleteEventForm(Model model) {
+        model.addAttribute("events", eventDao.findAll());
+
+        return "events/view";
+    }
+
+    @PostMapping("view")
+    public String processDeleteEventsForm(@RequestParam(required = false) int[] eventIds) {
+        if (eventIds != null) {
+            for (int id : eventIds) {
+                eventDao.findById(id);
+            }
+        }
+//        return "donors/view";
+        return "redirect:";
     }
 }

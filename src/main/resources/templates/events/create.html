@@ -46,13 +46,13 @@
 
         <div >
             <label th:for="starttime">Start Time</label>
-            <input type="starttime" class="form-control" th:field="*{starttime}"/>
+            <input type="time" class="form-control" th:field="*{starttime}"/>
             <span th:errors="*{starttime}" class="error"></span>
 
         </div>
         <div >
             <label th:for="endtime">End Time</label>
-            <input type="endtime" class="form-control" th:field="*{endtime}"/>
+            <input type="time" class="form-control" th:field="*{endtime}"/>
             <span th:errors="*{endtime}" class="error"></span>
 
         </div>

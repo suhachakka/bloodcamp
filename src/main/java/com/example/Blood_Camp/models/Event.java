@@ -25,12 +25,11 @@ public class Event {
     private String date;
 
 
-    @Column(name = "start_time",columnDefinition = "TIME")
-    @DateTimeFormat
-    private LocalTime starttime;
+    @Basic
+    private String starttime;
 
-    @Column(name = "end_time",columnDefinition = "TIME")
-    private LocalTime endtime;
+    @Basic
+    private String endtime;
 
     @NotNull
     @Size(min=8 , max= 70)
@@ -46,7 +45,7 @@ public class Event {
 
     public Event(){}
 
-    public Event( String location, String date, LocalTime starttime, LocalTime endtime, String streetname, String city, int zipcode) {
+    public Event( String location, String date, String starttime,String endtime, String streetname, String city, int zipcode) {
 
         this.location = location;
         this.date = date;
@@ -73,21 +72,6 @@ public class Event {
         this.date = date;
     }
 
-    public LocalTime getStarttime() {
-        return starttime;
-    }
-
-    public void setStarttime(LocalTime starttime) {
-        this.starttime = starttime;
-    }
-
-    public LocalTime getEndtime() {
-        return endtime;
-    }
-
-    public void setEndtime(LocalTime endtime) {
-        this.endtime = endtime;
-    }
 
     public String getStreetname() {
         return streetname;
@@ -99,6 +83,22 @@ public class Event {
 
     public String getCity() {
         return city;
+    }
+
+    public String getStarttime() {
+        return starttime;
+    }
+
+    public void setStarttime(String starttime) {
+        this.starttime = starttime;
+    }
+
+    public String getEndtime() {
+        return endtime;
+    }
+
+    public void setEndtime(String endtime) {
+        this.endtime = endtime;
     }
 
     public void setCity(String city) {
