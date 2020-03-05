@@ -20,10 +20,14 @@ public class EventController {
     @Autowired
     private EventDao eventDao;
 
-    @GetMapping //path or route
-    public String viewevent(Model model) { // route handler method
+    @PostMapping //path or route
+    public String viewevent(Model model,Event event,@RequestParam(required = false) int[] eventIds) { // route handler method
         model.addAttribute("title", "event details");
-        model.addAttribute("events", eventDao.findAll());
+        if (eventIds != null) {
+            for (int id : eventIds) {
+                model.addAttribute("events", eventDao.findById(id));
+            }
+        }
         return "events/view";
     }
 
@@ -51,21 +55,12 @@ public class EventController {
 
     }
 
-    @GetMapping("view/{id}")
-    public String renderDeleteEventForm(Model model) {
-        model.addAttribute("events", eventDao.findAll());
+    @GetMapping
+    public String renderviewEventForm(Model model,Event event) {
+        model.addAttribute("events", eventDao.findById(event.getId()));
 
         return "events/view";
     }
 
-    @PostMapping("view")
-    public String processDeleteEventsForm(@RequestParam(required = false) int[] eventIds) {
-        if (eventIds != null) {
-            for (int id : eventIds) {
-                eventDao.findById(id);
-            }
-        }
-//        return "donors/view";
-        return "redirect:";
-    }
+
 }

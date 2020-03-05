@@ -109,6 +109,10 @@ public class Event {
         return zipcode;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
     }
