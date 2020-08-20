@@ -30,17 +30,20 @@
         </div>
         <!--<div class="card">-->
             <div class="card-body text-center " style="background-color:red;">
-                <form method="post" th:object="${event}"  >
+<!--                <form method="post" th:object="${event}"  >-->
+<!--                    <ul>-->
+<!--                    <li th:each="events : ${event}" >-->
                     <h3 th:text ="${'LOCATION :' + event.location}" class="card-title">Card title</h3>
                     <h3 th:text ="${'STREET :' + event.streetname}" class="card-title">Card title</h3>
                     <h3 th:text ="${'CITY :' + event.city}" class="card-title">Card title</h3>
                     <h3 th:text ="${'ZIPCODE :' + event.zipcode}" class="card-title">Card title</h3>
                     <h3 th:text ="${'DATE:' + event.date}" class="card-text">Date</h3>
                     <h3 th:text ="${'START TIME: ' +event.starttime}" class="card-text">startTime</h3>
-                    <h3 th:text ="${'END TIME: ' +event.endtime}" class="card-text">end Time</h3>
+                        <h3 th:text ="${'END TIME: ' +event.endtime}" class="card-text">end Time</h3>
+
 
                     <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
-                    <!--</div>--></form>
+<!--                    &lt;!&ndash;</div>&ndash;&gt;</form>-->
             </div></div>
 <!--</div>-->
 
