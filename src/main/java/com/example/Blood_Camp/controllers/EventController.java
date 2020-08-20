@@ -12,6 +12,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("events")
@@ -20,16 +21,16 @@ public class EventController {
     @Autowired
     private EventDao eventDao;
 
-    @PostMapping //path or route
-    public String viewevent(Model model,Event event,@RequestParam(required = false) int[] eventIds) { // route handler method
-        model.addAttribute("title", "event details");
-        if (eventIds != null) {
-            for (int id : eventIds) {
-                model.addAttribute("events", eventDao.findById(id));
-            }
-        }
-        return "events/view";
-    }
+//    @PostMapping //path or route
+//    public String viewevent(Model model,Event event,@RequestParam(required = false) int[] eventIds) { // route handler method
+//        model.addAttribute("title", "event details");
+//        if (eventIds != null) {
+//            for (int id : eventIds) {
+//                model.addAttribute("events", eventDao.findById(id));
+//            }
+//        }
+//        return "events/view";
+//    }
 
     @GetMapping("create")
     public String displayEventForm(Model model) {
@@ -55,12 +56,25 @@ public class EventController {
 
     }
 
+//    @GetMapping
+//    public String renderviewEventForm(Model model,Event event) {
+//        model.addAttribute("events", eventDao.findById(event.getId()));
+//
+//        return "events/view";
+//    }
     @GetMapping
-    public String renderviewEventForm(Model model,Event event) {
-        model.addAttribute("events", eventDao.findById(event.getId()));
+    public String displayViewEmployer(Model model, @RequestParam int eventId) {
 
-        return "events/view";
+//        Optional optEmployer = null;
+        Optional optEvent = eventDao.findById(eventId);
+     if (optEvent.isPresent()) {
+            Event event = (Event) optEvent.get();
+            model.addAttribute("event", event);
+            return "events/view";
+        } else {
+            return "redirect:../";
     }
-
-
 }
+}
+
+
