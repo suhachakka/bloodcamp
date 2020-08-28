@@ -1,6 +1,5 @@
-package com.example.Blood_Camp;
+package com.example.BloodCamp;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import static org.springframework.boot.SpringApplication.*;

@@ -1,25 +1,27 @@
-package com.example.Blood_Camp.models;
+package com.example.BloodCamp.models;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalTime;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 
 public class Event {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
+    @GenericGenerator(name="native",strategy = "native")
     private int id;
 
     @NotNull
     @Size(min=8, max= 70)
     private String location;
+
 
     @CreatedDate
     private String date;
@@ -42,6 +44,10 @@ public class Event {
     @NotNull
     @Min(5)
     private int zipcode;
+
+    @ManyToMany(mappedBy ="event")
+    private List<Donor> donors=new ArrayList<>();
+
 
     public Event(){}
 
@@ -109,11 +115,19 @@ public class Event {
         return zipcode;
     }
 
+    public void setZipcode(int zipcode) {
+        this.zipcode = zipcode;
+    }
+
     public int getId() {
         return id;
     }
 
-    public void setZipcode(int zipcode) {
-        this.zipcode = zipcode;
+    public List<Donor> getDonors() {
+        return donors;
+    }
+
+    public void setDonors(List<Donor> donors) {
+        this.donors = donors;
     }
 }

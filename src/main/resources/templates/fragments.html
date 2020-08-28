@@ -19,28 +19,39 @@
             <li class="nav-item">
                 <a class="nav-link" href="/donors/">Home</a>
             </li>
+            <p th:if="${session.donorname == null}">
             <li class="nav-item">
                 <a class="nav-link" href="/donors/newdonor">Sign Up</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/donors/login">Log In</a>
             </li>
+
+            </p>
+
             <li class="nav-item">
-                <a class="nav-link" href="/events">Donor Event</a>
+                <a class="nav-link" href="/events/recentEvent">Donor Event</a>
             </li>
+            <div th:if=" ${session.role =='Admin'}">
+            <li class="nav-item">
+                <a class="nav-link" href="/events/create">Add Event</a>
+            </li></div>
             <li class="nav-item">
                 <a class="nav-link" href="/donors/policy">Policy</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/events/create">Add Event</a>
-            </li>
         </ul>
 
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <p th:if="${session.donorname} != null">
 
+                <li class="nav-item active">
+                    <a class="nav-link" style="color:#8B2323; margin-auto:0;" href="/donors/signout"><strong>Sign out</strong> </a>
+                </li>&nbsp;&nbsp;&nbsp;&nbsp;
+                </p></ul>
 
+        </div>
 </nav>
-
-<!--</nav>-->
 </nav>
 </body>
 </html>

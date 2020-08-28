@@ -1,16 +1,19 @@
-package com.example.Blood_Camp.models;
+package com.example.BloodCamp.models;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 
 public class Donor {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
+    @GenericGenerator(name="native",strategy = "native")
     private int id;
 
     @NotNull
@@ -40,13 +43,15 @@ public class Donor {
     @Transient
     private String confirmPassword;
 
+    private String role;
 
-
+     @ManyToMany
+     private List<Event> event;
 
 //default constructor
     public Donor(){}
 //parameterized constructor
-    public Donor(int id, String name, String bloodgroup, String mobilenumber, int zipcode, String email, String password, String confirmPassword) {
+    public Donor(int id, String name, String bloodgroup, String mobilenumber, int zipcode, String email, String password, String confirmPassword,String role) {
         this.id = id;
         this.name = name;
         this.bloodgroup = bloodgroup;
@@ -55,6 +60,7 @@ public class Donor {
         this.email = email;
         this.password = password;
         this.confirmPassword = confirmPassword;
+        this.role=role;
     }
 
     public String getConfirmPassword() {
@@ -118,6 +124,14 @@ public class Donor {
         return password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public void setPassword(String password) {
         this.password = password;
         checkPassword();
@@ -127,5 +141,13 @@ public class Donor {
         if(confirmPassword!= null && password!= null && !password.equals(confirmPassword)){
             confirmPassword=null;
         }
+    }
+
+    public List<Event> getEvent() {
+        return event;
+    }
+
+    public void setEvent(List<Event> event) {
+        this.event = event;
     }
 }

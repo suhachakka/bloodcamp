@@ -68,6 +68,12 @@
           <span th:errors="*{confirmPassword}" class="error"></span>
 
       </div>
+     <div >
+         <label>Role Type</label>
+         <input  type="radio" name="roleType" value="Admin" th:field="*{role}" />Admin
+         <input  type="radio" name="roleType" value="User" th:field="*{role}" />User
+
+     </div>
 
     <!-- <div >
           <label th:for="type">Type</label>
@@ -79,10 +85,13 @@
       </div>-->
 
       <input type="submit" value="Sign Up" />
-  </form>
-<p>
+     <p th:text="${param.q}" class="error">Test1</p>
+
+     <p>
+
     Already a User? <a href = "/donors/login">Sign in</a>
 </p>
+ </form>
 </div>
 </body>
 </html>
