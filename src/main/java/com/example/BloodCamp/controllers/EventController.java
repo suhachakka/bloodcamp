@@ -33,11 +33,8 @@ public class EventController {
         Optional<Event> optEvent = eventDao.findById(id);
         if(optEvent.isPresent())
             event = optEvent.get();
-        if(session.getAttribute("sDonorId")!= null) {
             model.addAttribute("events", event);
-        }else{
-            return "donor/login";
-        }
+
         return "events/view";
     }
 

@@ -1,11 +1,13 @@
 package com.example.BloodCamp.models;
 
+import com.sun.istack.NotNull;
+
 import javax.validation.constraints.NotEmpty;
 
 
 public class Login {
 
-    @NotEmpty(message = "Please enter the name")
+    @NotEmpty(message = "Please enter the email")
     private String email;
 
     @NotEmpty(message = "Please enter the password")

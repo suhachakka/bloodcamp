@@ -7,20 +7,7 @@
 <h1 th:text="${title}">Default Title</h1>
 <nav th:replace="fragments :: navigation"></nav>
 <div class ="container">
-    <!--<div class="card" style="width:40rem; text-align:center; margin-left:30%;">-->
-        <!--<img src="https://previews.123rf.com/images/elenarolau/elenarolau1605/elenarolau160500024/56876405-blood-donation-illustration-stylized-heart-with-drop-and-typographic-composition-world-blood-donor-d.jpg" class="card-img-top" alt="...">-->
-        <!--<div class="card-body">-->
-            <!--&lt;!&ndash;<div th:if="${event} and ${events.size()}">&ndash;&gt;-->
-            <!--&lt;!&ndash;<div th:each="event : ${events}">&ndash;&gt;-->
-             <!--<form method="post" th:object="${event}"  >-->
-            <!--<h5 th:text ="${'Location :' + event.location}" class="card-title">Card title</h5>-->
-            <!--<p th:text ="${'DATE:' + event.date}" class="card-text">Date</p>-->
-            <!--<p th:text ="${'Start Time: ' +event.starttime}" class="card-text">startTime</p>-->
-            <!--<p th:text ="${'End Time: ' +event.endtime}" class="card-text">end Time</p>-->
 
-            <!--&lt;!&ndash;<a href="#" class="btn btn-primary">Go somewhere</a>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;</form>-->
-            <!--</div></div>-->
     <div class="card-group">
         <!--<div class="card">-->
             <div class="card-body text-center" style="background-color:red; margin-right:10%;" >
@@ -33,7 +20,6 @@
 <!--                <form method = "post" th:action="@{'view/{id}' +${event.id}}">-->
 
                 <th:block th:each="event : ${events}">
-<!--                    <div th:if ="${event}">-->
 
                     <h3 th:text ="${'LOCATION :' + event.location}" class="card-title">Card title</h3>
                 <h3 th:text ="${'STREET :' + event.streetname}" class="card-title">Card title</h3>
@@ -43,7 +29,6 @@
                 <h3 th:text ="${'START TIME: ' +event.starttime}" class="card-text">startTime</h3>
                         <h3 th:text ="${'END TIME: ' +event.endtime}" class="card-text">end Time</h3>
 
-<!--            </div>-->
                 </th:block>
 <!--                </form>-->
 
